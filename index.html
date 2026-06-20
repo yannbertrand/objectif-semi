@@ -1,0 +1,2528 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12km & Semi — Plan 15 Semaines</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #0d0e12;
+        --bg2: #14151c;
+        --bg3: #1c1e28;
+        --bg4: #24263400;
+        --border: rgba(255, 255, 255, 0.07);
+        --border2: rgba(255, 255, 255, 0.13);
+        --text: #f0f0f5;
+        --muted: #7a7d90;
+        --muted2: #9597aa;
+        --accent: #ff6b35;
+        --accent2: #ff8c5c;
+
+        --teal: #3ecf96;
+        --teal-bg: rgba(62, 207, 150, 0.1);
+        --teal-border: rgba(62, 207, 150, 0.3);
+        --teal-text: #2aa877;
+
+        --purple: #a89df4;
+        --purple-bg: rgba(168, 157, 244, 0.1);
+        --purple-border: rgba(168, 157, 244, 0.3);
+        --purple-text: #7b70e0;
+
+        --coral: #f0997b;
+        --coral-bg: rgba(240, 153, 123, 0.1);
+        --coral-border: rgba(240, 153, 123, 0.3);
+        --coral-text: #c96a45;
+
+        --vma-bg: rgba(226, 75, 74, 0.1);
+        --vma-border: rgba(226, 75, 74, 0.3);
+        --vma-text: #e24b4a;
+
+        --seuil-bg: rgba(168, 157, 244, 0.12);
+        --seuil-border: rgba(168, 157, 244, 0.35);
+        --seuil-text: #a89df4;
+
+        --long-bg: rgba(62, 207, 150, 0.1);
+        --long-border: rgba(62, 207, 150, 0.3);
+        --long-text: #3ecf96;
+
+        --recup-bg: rgba(136, 135, 128, 0.12);
+        --recup-border: rgba(136, 135, 128, 0.3);
+        --recup-text: #888780;
+
+        --compet-bg: rgba(255, 107, 53, 0.15);
+        --compet-border: rgba(255, 107, 53, 0.4);
+        --compet-text: #ff6b35;
+
+        --cle-bg: rgba(239, 159, 39, 0.12);
+        --cle-border: rgba(239, 159, 39, 0.35);
+        --cle-text: #ef9f27;
+
+        --renfort-bg: rgba(94, 158, 224, 0.1);
+        --renfort-border: rgba(94, 158, 224, 0.3);
+        --renfort-text: #5e9ee0;
+      }
+
+      body {
+        font-family: 'DM Sans', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 0;
+      }
+
+      /* HERO HEADER */
+      .hero {
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        padding: 2.5rem 2rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: '21K';
+        position: absolute;
+        right: -10px;
+        top: -20px;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 180px;
+        font-weight: 800;
+        color: rgba(255, 107, 53, 0.04);
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -4px;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+      }
+      .hero-tag::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--accent);
+        border-radius: 1px;
+      }
+      .hero h1 {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.5px;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+      }
+      .hero h1 span {
+        color: var(--accent);
+      }
+      .hero-sub {
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 300;
+        letter-spacing: 0.02em;
+      }
+      .hero-badges {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+      .hero-badge {
+        font-size: 12px;
+        padding: 5px 12px;
+        border-radius: 100px;
+        border: 1px solid var(--border2);
+        color: var(--muted2);
+        background: var(--bg3);
+        font-weight: 400;
+      }
+      .hero-badge.hot {
+        border-color: var(--coral-border);
+        color: var(--coral-text);
+        background: var(--coral-bg);
+      }
+
+      /* TABS */
+      .nav {
+        display: flex;
+        padding: 0 2rem;
+        gap: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .nav-tab {
+        padding: 1rem 1.25rem;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--muted);
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+        font-family: 'DM Sans', sans-serif;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+      .nav-tab:hover {
+        color: var(--text);
+      }
+      .nav-tab.on {
+        color: var(--text);
+        border-bottom-color: var(--accent);
+        font-weight: 500;
+      }
+
+      /* CONTENT */
+      .content {
+        padding: 2rem;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .sec {
+        display: none;
+      }
+      .sec.on {
+        display: block;
+      }
+
+      /* TARGET BOX */
+      .target-box {
+        border: 1px solid var(--coral-border);
+        background: var(--coral-bg);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .target-box::after {
+        content: '< 20:00';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 4rem;
+        font-weight: 800;
+        color: rgba(240, 153, 123, 0.12);
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      .target-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--coral-text);
+        font-weight: 500;
+        margin-bottom: 0.4rem;
+      }
+      .target-main {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--coral);
+        line-height: 1;
+        margin-bottom: 0.25rem;
+        letter-spacing: -0.5px;
+      }
+      .target-sub {
+        font-size: 13px;
+        color: var(--coral-text);
+        font-weight: 300;
+      }
+
+      /* OBJECTIVE CARDS */
+      .obj-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 1.5rem;
+      }
+      .obj-card {
+        border-radius: 12px;
+        padding: 1.1rem 1.25rem;
+        border: 1px solid var(--border);
+        background: var(--bg2);
+      }
+      .obj-card.a {
+        border-color: var(--teal-border);
+        background: var(--teal-bg);
+      }
+      .obj-card.b {
+        border-color: var(--purple-border);
+        background: var(--purple-bg);
+      }
+      .obj-card-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+      .obj-card.a .obj-card-label {
+        color: var(--teal-text);
+      }
+      .obj-card.b .obj-card-label {
+        color: var(--purple-text);
+      }
+      .obj-card-val {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .obj-card.a .obj-card-val {
+        color: var(--teal);
+      }
+      .obj-card.b .obj-card-val {
+        color: var(--purple);
+      }
+      .obj-card-detail {
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.5;
+      }
+      .obj-card.a .obj-card-detail {
+        color: var(--teal-text);
+      }
+      .obj-card.b .obj-card-detail {
+        color: var(--purple-text);
+      }
+
+      /* KPI GRID */
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 10px;
+        margin-bottom: 1.5rem;
+      }
+      .kpi {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem 1.1rem;
+      }
+      .kpi-l {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+      .kpi-v {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1;
+        margin-bottom: 3px;
+      }
+      .kpi-s {
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 300;
+      }
+
+      /* SECTION TITLE */
+      .section-title {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      /* PROGRESS BARS */
+      .bars {
+        margin-bottom: 1.5rem;
+      }
+      .bar-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .bar-label {
+        font-size: 12px;
+        color: var(--muted);
+        width: 80px;
+        flex-shrink: 0;
+        font-weight: 300;
+      }
+      .bar-track {
+        flex: 1;
+        height: 6px;
+        background: var(--bg3);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .bar-fill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bar-val {
+        font-size: 12px;
+        font-weight: 500;
+        width: 75px;
+        text-align: right;
+        color: var(--text);
+        flex-shrink: 0;
+      }
+
+      /* INFO BOX */
+      .info-box {
+        background: var(--bg2);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 10px 10px 0;
+        padding: 1rem 1.25rem;
+        margin-top: 1.5rem;
+        font-size: 13px;
+        color: var(--muted2);
+        line-height: 1.7;
+      }
+      .info-box strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      /* ZONES TABLE */
+      .zones-header {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: 70px 1fr 80px 110px;
+        gap: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 10px;
+      }
+      .z-row {
+        display: grid;
+        grid-template-columns: 70px 1fr 80px 110px;
+        gap: 8px;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .z-row:last-child {
+        border-bottom: none;
+      }
+      .z-badge {
+        font-size: 11px;
+        font-weight: 600;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 0.05em;
+        padding: 4px 10px;
+        border-radius: 6px;
+        text-align: center;
+      }
+      .z-name {
+        font-size: 13px;
+        font-weight: 300;
+      }
+      .z-pct {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .z-allure {
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      /* PROGRAMME — PHASE LEGEND */
+      .ph-legend {
+        display: flex;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .ph-l {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12px;
+        color: var(--muted2);
+      }
+      .ph-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* WEEK SELECTOR */
+      .w-sel {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 1.75rem;
+      }
+      .wb {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--bg2);
+        cursor: pointer;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.15s;
+        letter-spacing: 0.02em;
+      }
+      .wb.wb-done {
+        opacity: 0.55;
+        border-color: var(--teal-border);
+        background: var(--teal-bg);
+      }
+      .wb:hover {
+        color: var(--text);
+        border-color: var(--border2);
+      }
+      .wb.p1 {
+        border-color: var(--teal-border);
+        color: var(--teal);
+      }
+      .wb.p2 {
+        border-color: var(--purple-border);
+        color: var(--purple);
+      }
+      .wb.p3 {
+        border-color: var(--coral-border);
+        color: var(--coral);
+      }
+      .wb.p1.on {
+        background: var(--teal-bg);
+      }
+      .wb.p2.on {
+        background: var(--purple-bg);
+      }
+      .wb.p3.on {
+        background: var(--coral-bg);
+      }
+
+      /* WEEK HEADER */
+      .w-hdr {
+        margin-bottom: 1.25rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .w-phase {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+      .w-title {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        margin-bottom: 4px;
+      }
+      .w-focus {
+        font-size: 13px;
+        color: var(--muted2);
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      /* SESSION CARDS */
+      .sg {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+      }
+      .sc {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem 1.1rem;
+        transition: border-color 0.15s;
+      }
+      .sc:hover {
+        border-color: var(--border2);
+      }
+      .sc.sc-done {
+        opacity: 0.55;
+        border-color: var(--teal-border);
+        background: var(--teal-bg);
+      }
+      .sc-day {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      .sc-badge {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 600;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 0.08em;
+        padding: 3px 9px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+      .t-vma {
+        background: var(--vma-bg);
+        border: 1px solid var(--vma-border);
+        color: var(--vma-text);
+      }
+      .t-seuil {
+        background: var(--seuil-bg);
+        border: 1px solid var(--seuil-border);
+        color: var(--seuil-text);
+      }
+      .t-long {
+        background: var(--long-bg);
+        border: 1px solid var(--long-border);
+        color: var(--long-text);
+      }
+      .t-recup {
+        background: var(--recup-bg);
+        border: 1px solid var(--recup-border);
+        color: var(--recup-text);
+      }
+      .t-compet {
+        background: var(--compet-bg);
+        border: 1px solid var(--compet-border);
+        color: var(--compet-text);
+      }
+      .t-cle {
+        background: var(--cle-bg);
+        border: 1px solid var(--cle-border);
+        color: var(--cle-text);
+      }
+      .t-renfort {
+        background: var(--renfort-bg);
+        border: 1px solid var(--renfort-border);
+        color: var(--renfort-text);
+      }
+
+      .sc-title {
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        line-height: 1.35;
+        color: var(--text);
+      }
+      .sc-detail {
+        font-size: 12px;
+        color: var(--muted2);
+        line-height: 1.6;
+        font-weight: 300;
+      }
+
+      /* DONE CHECKMARK */
+      .sc.sc-done .sc-day::after {
+        content: ' ✓';
+        color: var(--teal);
+        font-weight: 700;
+      }
+
+      /* NOTE BOX */
+      .note-box {
+        background: var(--bg2);
+        border-left: 3px solid var(--cle-text);
+        border-radius: 0 10px 10px 0;
+        padding: 0.9rem 1.25rem;
+        margin-top: 1.25rem;
+        font-size: 13px;
+        color: var(--muted2);
+        line-height: 1.7;
+      }
+      .note-box strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      /* PROGRESS BAR */
+      .progress-wrap {
+        margin-top: 1.75rem;
+        position: relative;
+        z-index: 1;
+      }
+      .progress-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+      .progress-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .progress-stat {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--teal);
+        letter-spacing: 0.02em;
+      }
+      .progress-stat span {
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: var(--muted);
+        font-family: 'DM Sans', sans-serif;
+      }
+      .progress-track {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 3px;
+        background: var(--teal);
+        transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+      .progress-fill::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 8px rgba(62, 207, 150, 0.6);
+      }
+      .progress-segments {
+        display: flex;
+        margin-top: 8px;
+        gap: 2px;
+      }
+      .progress-seg {
+        flex: 1;
+        height: 3px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.06);
+        transition: background 0.3s;
+        cursor: default;
+      }
+      .progress-seg.done {
+        background: var(--teal);
+        opacity: 0.6;
+      }
+      .progress-seg.done-full {
+        background: var(--teal);
+        opacity: 1;
+      }
+      .progress-seg-labels {
+        display: flex;
+        margin-top: 5px;
+      }
+      .progress-seg-label {
+        flex: 1;
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        text-align: center;
+        opacity: 0.5;
+      }
+
+      /* ===================== CALCULATEUR D'ALLURE ===================== */
+
+      .calc-intro {
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: 300;
+        margin-bottom: 1.75rem;
+        line-height: 1.6;
+      }
+
+      /* Mode toggle */
+      .calc-mode-toggle {
+        display: flex;
+        gap: 0;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 3px;
+        margin-bottom: 1.5rem;
+        width: fit-content;
+      }
+      .calc-mode-btn {
+        padding: 7px 18px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--muted);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'DM Sans', sans-serif;
+        transition: all 0.15s;
+        letter-spacing: 0.02em;
+      }
+      .calc-mode-btn.on {
+        background: var(--bg2);
+        color: var(--text);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Input group */
+      .calc-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 1.25rem;
+        align-items: end;
+      }
+      .calc-field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .calc-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .calc-input-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .calc-input {
+        width: 100%;
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        border-radius: 10px;
+        padding: 11px 14px;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text);
+        outline: none;
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s;
+        letter-spacing: 0.03em;
+      }
+      .calc-input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.12);
+      }
+      .calc-unit {
+        position: absolute;
+        right: 12px;
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 400;
+        pointer-events: none;
+        font-family: 'DM Sans', sans-serif;
+      }
+      .calc-sep {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--muted);
+        text-align: center;
+        padding-bottom: 6px;
+      }
+
+      /* Divider */
+      .calc-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 1.5rem 0;
+      }
+
+      /* Result box */
+      .calc-result {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        min-height: 100px;
+        transition: border-color 0.2s;
+      }
+      .calc-result.has-result {
+        border-color: var(--accent);
+      }
+      .calc-result-bg {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 5rem;
+        font-weight: 800;
+        color: rgba(255, 107, 53, 0.05);
+        pointer-events: none;
+        white-space: nowrap;
+        letter-spacing: -2px;
+      }
+      .calc-result-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+      .calc-result-main {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 3.2rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        letter-spacing: -0.5px;
+        margin-bottom: 0.35rem;
+      }
+      .calc-result-sub {
+        font-size: 13px;
+        color: var(--muted2);
+        font-weight: 300;
+      }
+      .calc-result-empty {
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: 300;
+        font-style: italic;
+        padding: 1rem 0;
+      }
+
+      /* Split table */
+      .splits-title {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+        margin-top: 1.5rem;
+      }
+      .splits-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .splits-table th {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        font-weight: 500;
+        text-align: left;
+        padding: 6px 10px 8px;
+        border-bottom: 1px solid var(--border);
+      }
+      .splits-table td {
+        font-size: 13px;
+        padding: 9px 10px;
+        border-bottom: 1px solid var(--border);
+        color: var(--muted2);
+        font-weight: 300;
+      }
+      .splits-table tr:last-child td {
+        border-bottom: none;
+      }
+      .splits-table td:first-child {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .splits-table td.split-time {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+        letter-spacing: 0.02em;
+      }
+      .splits-table td.split-cumul {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.9rem;
+        color: var(--muted2);
+      }
+      .splits-table tr.split-highlight td {
+        color: var(--accent);
+      }
+      .splits-table tr.split-highlight td.split-time {
+        color: var(--accent);
+      }
+
+      /* Zone equivalences */
+      .zone-equiv {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
+        margin-top: 1.5rem;
+      }
+      .zone-eq-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.8rem 1rem;
+        text-align: center;
+      }
+      .zone-eq-label {
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      .zone-eq-val {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .zone-eq-sub {
+        font-size: 10px;
+        color: var(--muted);
+        font-weight: 300;
+        margin-top: 3px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 600px) {
+        .content {
+          padding: 1.25rem;
+        }
+        .hero {
+          padding: 1.75rem 1.25rem 1.5rem;
+        }
+        .nav {
+          padding: 0 1.25rem;
+          overflow-x: auto;
+        }
+        .obj-row {
+          grid-template-columns: 1fr;
+        }
+        .kpi-v {
+          font-size: 1.6rem;
+        }
+        .sg {
+          grid-template-columns: 1fr 1fr;
+        }
+        .calc-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .calc-grid .calc-sep {
+          display: none;
+        }
+      }
+      @media (max-width: 400px) {
+        .sg {
+          grid-template-columns: 1fr;
+        }
+        .calc-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <div class="hero-tag">Plan d'entraînement · 15 semaines</div>
+      <h1>12km <span>&amp;</span> Semi-marathon</h1>
+      <p class="hero-sub">
+        12km le 13 sept. (effort maîtrisé) · Semi-marathon le 4 oct. (objectif
+        prioritaire)
+      </p>
+      <div class="hero-badges">
+        <span class="hero-badge">4-5 séances / semaine</span>
+        <span class="hero-badge">3 phases</span>
+        <span class="hero-badge"
+          >Renfort adducteurs · psoas · Achille 2×/sem</span
+        >
+        <span class="hero-badge hot">Semi — 4 octobre</span>
+      </div>
+      <div class="progress-wrap" id="global-progress"></div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-tab" onclick="sw('analyse', this)">Faisabilité</button>
+      <button class="nav-tab" onclick="sw('zones', this)">Zones</button>
+      <button class="nav-tab on" onclick="sw('programme', this)">
+        Programme
+      </button>
+      <button class="nav-tab" onclick="sw('calc', this)">Allure</button>
+    </nav>
+
+    <div class="content">
+      <!-- FAISABILITÉ -->
+      <div id="tab-analyse" class="sec">
+        <div class="target-box">
+          <div class="target-label">Priorité</div>
+          <div class="target-main">Semi &lt; 1h38</div>
+          <div class="target-sub">
+            → 4:38/km · le 12km du 13/09 sert de jalon, pas de course à fond
+          </div>
+        </div>
+        <div class="obj-row">
+          <div class="obj-card a">
+            <div class="obj-card-label">12km — 13 septembre</div>
+            <div class="obj-card-val">52:00–54:30</div>
+            <div class="obj-card-detail">
+              Effort contrôlé (~88-90% VMA, 4:20-4:32/km)<br />Sert de test de
+              forme avant le semi, pas un objectif chrono prioritaire
+            </div>
+          </div>
+          <div class="obj-card b">
+            <div class="obj-card-label">Semi — 4 octobre — objectif</div>
+            <div class="obj-card-val">1h35–1h39</div>
+            <div class="obj-card-detail">
+              4:30-4:41/km, selon la forme du jour<br />Cohérent avec ton 5km
+              récent (20:46) projeté sur 21,1km
+            </div>
+          </div>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="kpi-l">5km actuel</div>
+            <div class="kpi-v">20:46</div>
+            <div class="kpi-s">4:09/km — post-plan 7 sem.</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-l">Semi avril</div>
+            <div class="kpi-v">1h46</div>
+            <div class="kpi-s">5:01/km — avec réserve</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-l">Potentiel semi estimé</div>
+            <div class="kpi-v">~1h36-1h40</div>
+            <div class="kpi-s">projection Riegel sur le 5km</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-l">Écart à combler</div>
+            <div class="kpi-v">Endurance</div>
+            <div class="kpi-s">la vitesse est là, il faut la tenir 21km</div>
+          </div>
+        </div>
+        <div class="section-title">
+          Construction de la forme sur 15 semaines
+        </div>
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-label">S1 (22/06)</span>
+            <div class="bar-track">
+              <div
+                class="bar-fill"
+                style="width: 65%; background: var(--teal)"
+              ></div>
+            </div>
+            <span class="bar-val" style="color: var(--teal)">Base / Seuil</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">S6-S11</span>
+            <div class="bar-track">
+              <div
+                class="bar-fill"
+                style="width: 82%; background: var(--purple)"
+              ></div>
+            </div>
+            <span class="bar-val" style="color: var(--purple)"
+              >Spécifique semi</span
+            >
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">S12 (12km)</span>
+            <div class="bar-track">
+              <div
+                class="bar-fill"
+                style="width: 90%; background: var(--coral)"
+              ></div>
+            </div>
+            <span class="bar-val" style="color: var(--coral)">Jalon ~90%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">S15 (semi)</span>
+            <div class="bar-track">
+              <div
+                class="bar-fill"
+                style="width: 100%; background: var(--accent)"
+              ></div>
+            </div>
+            <span class="bar-val" style="color: var(--accent)">100%</span>
+          </div>
+        </div>
+        <div class="info-box">
+          <strong>Pourquoi le 12km n'est pas l'objectif n°1 :</strong> seulement
+          3 semaines séparent les deux courses. Le 12km est couru à effort
+          maîtrisé (~90%, jamais à fond) pour servir d'indicateur de forme et de
+          répétition générale logistique, sans entamer la récupération
+          nécessaire avant le semi. Toute la structure du plan (volume,
+          intensité, affûtage) est calée sur le pic du 4 octobre.
+        </div>
+        <div class="info-box" style="border-color: var(--renfort-text)">
+          <strong>Prévention (adducteurs, psoas, Achille) :</strong> maintenue à
+          2 séances/semaine sur l'intégralité du plan, y compris pendant
+          l'affûtage (en version courte). C'est ce qui te permettra d'absorber
+          la hausse de volume jusqu'à S11 sans douleur récurrente.
+        </div>
+      </div>
+
+      <!-- ZONES -->
+      <div id="tab-zones" class="sec">
+        <p
+          style="
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+          "
+        >
+          Allures calibrées sur ta VMA estimée (~15,3-15,6 km/h). À recalibrer
+          après le test de S6 et le 12km de S12.
+        </p>
+        <div class="zones-header">
+          <span>Zone</span><span>Nom</span><span>% VMA</span><span>Allure</span>
+        </div>
+        <div class="z-row">
+          <span
+            class="z-badge"
+            style="
+              background: var(--long-bg);
+              border: 1px solid var(--long-border);
+              color: var(--long-text);
+            "
+            >EF</span
+          >
+          <span class="z-name">Endurance fondamentale</span>
+          <span class="z-pct">65–75%</span>
+          <span class="z-allure">5:10–5:57/km</span>
+        </div>
+        <div class="z-row">
+          <span
+            class="z-badge"
+            style="
+              background: var(--seuil-bg);
+              border: 1px solid var(--seuil-border);
+              color: var(--seuil-text);
+            "
+            >SA</span
+          >
+          <span class="z-name">Seuil anaérobie</span>
+          <span class="z-pct">83–87%</span>
+          <span class="z-allure">4:27–4:40/km</span>
+        </div>
+        <div
+          class="z-row"
+          style="
+            background: var(--teal-bg);
+            border-radius: 10px;
+            padding: 12px;
+            border: 1px solid var(--teal-border);
+            margin-bottom: 2px;
+          "
+        >
+          <span
+            class="z-badge"
+            style="
+              background: var(--teal-bg);
+              border: 1px solid var(--teal-border);
+              color: var(--teal);
+            "
+            >A12</span
+          >
+          <span class="z-name" style="font-weight: 500; color: var(--teal)"
+            >Allure 12km (effort maîtrisé)</span
+          >
+          <span class="z-pct" style="color: var(--teal-text)">88–90%</span>
+          <span class="z-allure" style="color: var(--teal)">4:20–4:32/km</span>
+        </div>
+        <div
+          class="z-row"
+          style="
+            background: var(--coral-bg);
+            border-radius: 10px;
+            padding: 12px;
+            border: 1px solid var(--coral-border);
+            margin-bottom: 2px;
+          "
+        >
+          <span
+            class="z-badge"
+            style="
+              background: var(--coral-bg);
+              border: 1px solid var(--coral-border);
+              color: var(--coral);
+            "
+            >AHM</span
+          >
+          <span class="z-name" style="font-weight: 500; color: var(--coral)"
+            >Allure semi cible</span
+          >
+          <span class="z-pct" style="color: var(--coral-text)">84–87%</span>
+          <span class="z-allure" style="color: var(--coral)"
+            >4:30–4:41/km ← clé</span
+          >
+        </div>
+        <div class="z-row">
+          <span
+            class="z-badge"
+            style="
+              background: var(--vma-bg);
+              border: 1px solid var(--vma-border);
+              color: var(--vma-text);
+            "
+            >VMA+</span
+          >
+          <span class="z-name">Sur-VMA (développement)</span>
+          <span class="z-pct">105–112%</span>
+          <span class="z-allure">3:42–3:55/km</span>
+        </div>
+        <div class="z-row">
+          <span
+            class="z-badge"
+            style="
+              background: var(--cle-bg);
+              border: 1px solid var(--cle-border);
+              color: var(--cle-text);
+            "
+            >SPR</span
+          >
+          <span class="z-name">Sprint / côtes (neuromusculaire)</span>
+          <span class="z-pct">115–130%</span>
+          <span class="z-allure">3:13–3:38/km</span>
+        </div>
+        <div class="info-box">
+          <strong>Deux allures clés à distinguer.</strong> L'allure A12
+          (4:20-4:32/km) sert pour le 12km du 13/09, couru sous le seuil maximal
+          pour préserver la récup. L'allure AHM (4:30-4:41/km) est la vraie
+          cible du plan : c'est elle qui doit devenir "confortable
+          inconfortable" sur 21km d'ici le 4 octobre.
+        </div>
+      </div>
+
+      <!-- PROGRAMME -->
+      <div id="tab-programme" class="sec on">
+        <div class="ph-legend">
+          <span class="ph-l"
+            ><span class="ph-dot" style="background: var(--teal)"></span>Phase 1
+            — Développement (S1–S5)</span
+          >
+          <span class="ph-l"
+            ><span class="ph-dot" style="background: var(--purple)"></span>Phase
+            2 — Spécifique semi & 12km (S6–S12)</span
+          >
+          <span class="ph-l"
+            ><span class="ph-dot" style="background: var(--coral)"></span>Phase
+            3 — Transition & affûtage semi (S13–S15)</span
+          >
+        </div>
+        <div class="w-sel" id="ws"></div>
+        <div id="wc"></div>
+      </div>
+
+      <!-- CALCULATEUR D'ALLURE -->
+      <div id="tab-calc" class="sec">
+        <p class="calc-intro">
+          Calcule ton allure, ta vitesse ou ton temps de course à partir de deux
+          valeurs connues. Sélectionne une distance ou saisis-la librement.
+        </p>
+
+        <!-- Mode toggle -->
+        <div class="calc-mode-toggle">
+          <button class="calc-mode-btn on" onclick="setMode('allure', this)">
+            Allure → Temps
+          </button>
+          <button class="calc-mode-btn" onclick="setMode('temps', this)">
+            Temps → Allure
+          </button>
+          <button class="calc-mode-btn" onclick="setMode('vitesse', this)">
+            Vitesse → Temps
+          </button>
+        </div>
+        <div class="calc-mode-toggle">
+          <button class="calc-mode-btn on" onclick="setMode('moyenne', this)">
+            Moyenne
+          </button>
+        </div>
+
+        <!-- Input distance libre -->
+        <div class="calc-field" style="margin-bottom: 1.25rem">
+          <label class="calc-label">Distance</label>
+          <div class="calc-input-wrap" style="max-width: 200px">
+            <input
+              class="calc-input"
+              id="inp-dist"
+              type="number"
+              min="0.1"
+              step="0.1"
+              value="21.1"
+              oninput="onDistInput()"
+            />
+            <span class="calc-unit">km</span>
+          </div>
+        </div>
+
+        <div class="calc-divider"></div>
+
+        <!-- Inputs dynamiques selon le mode -->
+        <div id="calc-inputs"></div>
+
+        <!-- Résultat -->
+        <div class="calc-result" id="calc-result">
+          <div class="calc-result-bg" id="calc-result-bg"></div>
+          <div class="calc-result-empty" id="calc-result-empty">
+            Remplis les champs ci-dessus pour obtenir le résultat.
+          </div>
+          <div id="calc-result-content" style="display: none">
+            <div class="calc-result-label" id="calc-result-label"></div>
+            <div class="calc-result-main" id="calc-result-main"></div>
+            <div class="calc-result-sub" id="calc-result-sub"></div>
+          </div>
+        </div>
+
+        <!-- Splits kilométriques -->
+        <div id="splits-wrap" style="display: none">
+          <div class="splits-title">Passages kilométriques</div>
+          <table class="splits-table" id="splits-table">
+            <thead>
+              <tr>
+                <th>Km</th>
+                <th>Passage</th>
+                <th>Temps cumulé</th>
+              </tr>
+            </thead>
+            <tbody id="splits-body"></tbody>
+          </table>
+        </div>
+
+        <!-- Équivalences zones -->
+        <div id="equiv-wrap" style="display: none; margin-top: 1.5rem">
+          <div class="section-title">
+            Allures d'entraînement correspondantes
+          </div>
+          <div class="zone-equiv" id="zone-equiv"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* ======================================================
+         PROGRAMME
+      ====================================================== */
+      function sw(id, el) {
+        document
+          .querySelectorAll('.sec')
+          .forEach((s) => s.classList.remove('on'));
+        document
+          .querySelectorAll('.nav-tab')
+          .forEach((t) => t.classList.remove('on'));
+        document.getElementById('tab-' + id).classList.add('on');
+        if (el) el.classList.add('on');
+      }
+
+      const W = [
+        {
+          n: 1,
+          p: 1,
+          label: 'Sem. 1 — 22 au 28 juin',
+          focus: 'Reprise structurée : seuil + VMA courte',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '12 × 300m à 3:50/km',
+              detail:
+                "Échauffement 15'<br>12 × 300m à 3:48–3:52/km / récup 100m trot<br>Retour calme 10'. Réactiver la vitesse en douceur après le 5km",
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 3 × 8'",
+              detail:
+                "Échauffement 15'<br>3 × 8' à 4:33–4:38/km (récup 2')<br>Retour calme 10'. Pose la base du seuil pour les 15 prochaines semaines",
+            },
+            {
+              day: 'Vendredi',
+              type: 'renfort',
+              title: 'Renforcement ciblé',
+              detail:
+                '2 séances 20-25min cette semaine : adducteurs (gainage Copenhagen ou élastique), psoas (montées de genoux lestées + gainage), Achille/mollets (élévations excentriques sur step). Toujours après une séance facile, jamais avant une séance clé.',
+            },
+            {
+              day: 'Samedi',
+              type: 'long',
+              title: 'Sortie longue 12km EF',
+              detail:
+                'Allure 5:30–5:50/km, plat. Première sortie longue du cycle, garder du jus',
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 30'",
+              detail: 'Très facile. Marche/jogging léger + étirements',
+            },
+          ],
+        },
+        {
+          n: 2,
+          p: 1,
+          label: 'Sem. 2 — 29 juin au 5 juillet',
+          focus: 'Construction du seuil',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '10 × 400m à 3:48/km',
+              detail:
+                "Échauffement 15'<br>10 × 400m à 3:46–3:50/km / récup 90\" trot<br>Retour calme 10'",
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 2 × 12'",
+              detail:
+                "Échauffement 15'<br>2 × 12' à 4:32–4:38/km (récup 3')<br>Retour calme 10'. Volume seuil en hausse",
+            },
+            {
+              day: 'Vendredi',
+              type: 'renfort',
+              title: 'Renforcement + côtes courtes',
+              detail:
+                "2 séances 20-25min cette semaine : adducteurs (gainage Copenhagen ou élastique), psoas (montées de genoux lestées + gainage), Achille/mollets (élévations excentriques sur step). Toujours après une séance facile, jamais avant une séance clé.<br><br>Ajout : 8 × 60m en côte douce (6-8%) après le renfort, pour le tendon d'Achille en charge",
+            },
+            {
+              day: 'Samedi',
+              type: 'long',
+              title: 'Sortie longue 13km',
+              detail:
+                "EF classique + 15' finales à allure semi cible (4:35–4:40/km) pour habituer le corps",
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 35'",
+              detail: 'Allure très facile, conversation possible en continu',
+            },
+          ],
+        },
+        {
+          n: 3,
+          p: 1,
+          label: 'Sem. 3 — 6 au 12 juillet',
+          focus: 'Montée en volume seuil',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '8 × 500m à 3:50/km',
+              detail:
+                "Échauffement 15'<br>8 × 500m à 3:48–3:52/km / récup 150m trot<br>Retour calme 10'",
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 3 × 10'",
+              detail:
+                "Échauffement 15'<br>3 × 10' à 4:30–4:35/km (récup 2'30)<br>Retour calme 10'. Séance la plus dense de la phase 1",
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement ciblé',
+              detail:
+                '2 séances 20-25min cette semaine : adducteurs (gainage Copenhagen ou élastique), psoas (montées de genoux lestées + gainage), Achille/mollets (élévations excentriques sur step). Toujours après une séance facile, jamais avant une séance clé.',
+            },
+            {
+              day: 'Samedi',
+              type: 'long',
+              title: 'Sortie longue 14km EF',
+              detail:
+                'Volume EF en hausse progressive. Allure strictement EF, ne pas accélérer',
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 30'",
+              detail: 'Très facile, ou repos si jambes lourdes',
+            },
+          ],
+        },
+        {
+          n: 4,
+          p: 1,
+          label: 'Sem. 4 — 13 au 19 juillet',
+          focus: 'Semaine allégée — assimilation',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '6 × 400m à 3:50/km',
+              detail:
+                'Échauffement 15\'<br>6 × 400m à 3:48–3:52/km / récup 90"<br>Volume réduit, qualité maintenue',
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 2 × 10'",
+              detail:
+                "Échauffement 15'<br>2 × 10' à 4:33–4:38/km (récup 3')<br>Semaine de récupération active",
+            },
+            {
+              day: 'Vendredi',
+              type: 'renfort',
+              title: 'Renforcement (version courte)',
+              detail:
+                'Version courte (15min) cette semaine : mobilité hanches, gainage léger, quelques élévations mollets. Priorité à la fraîcheur des jambes.',
+            },
+            {
+              day: 'Samedi',
+              type: 'long',
+              title: 'Sortie longue 12km easy',
+              detail:
+                'Allure EF haute (5:40–6:00/km). Profiter de la semaine plus légère pour récupérer',
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Repos ou 20' très facile",
+              detail: 'Au choix selon les sensations de la semaine',
+            },
+          ],
+        },
+        {
+          n: 5,
+          p: 1,
+          label: 'Sem. 5 — 20 au 26 juillet',
+          focus: 'Pic phase 1 + test allure semi',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '10 × 400m à 3:46/km',
+              detail:
+                "Échauffement 15'<br>10 × 400m à 3:44–3:48/km / récup 90\"<br>Retour calme 10'. Dernière séance VMA dense avant la phase spécifique",
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 3 × 12'",
+              detail:
+                "Échauffement 15'<br>3 × 12' à 4:28–4:33/km (récup 3')<br>Retour calme 10'. Volume seuil maximal de la phase 1",
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement ciblé',
+              detail:
+                '2 séances 20-25min cette semaine : adducteurs (gainage Copenhagen ou élastique), psoas (montées de genoux lestées + gainage), Achille/mollets (élévations excentriques sur step). Toujours après une séance facile, jamais avant une séance clé.',
+            },
+            {
+              day: 'Samedi',
+              type: 'cle',
+              title: "Sortie longue 16km + 30' allure semi",
+              detail:
+                "Échauffement EF 10km, puis 30' (~6,5km) à allure semi cible (4:32–4:40/km), retour calme. Premier vrai test de l'allure sur la durée",
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 30'",
+              detail: 'Très facile, bilan de la phase 1',
+            },
+          ],
+          note: "<strong>Bilan phase 1 (S1-S5) :</strong> ce bloc de 30' à allure semi en fin de sortie longue est ton indicateur clé. Si l'allure 4:32-4:40/km reste fluide (FC stable, pas de dérive cardiaque), tu es en ligne avec l'objectif 1h35-1h39. Si ça devient très dur après 20', viser plutôt le haut de la fourchette (1h38-1h40) — ce qui reste un excellent résultat.",
+        },
+        {
+          n: 6,
+          p: 2,
+          label: 'Sem. 6 — 27 juillet au 2 août',
+          focus: 'Entrée en phase spécifique semi',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '8 × 500m à 3:48/km',
+              detail:
+                "Échauffement 15'<br>8 × 500m à 3:46–3:50/km / récup 150m trot<br>Entretien de la vitesse, volume modéré",
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 3 × 12'",
+              detail:
+                "Échauffement 15'<br>3 × 12' à 4:30–4:35/km (récup 3')<br>Retour calme 10'",
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement ciblé',
+              detail:
+                '2 séances 20-25min cette semaine : adducteurs (gainage Copenhagen ou élastique), psoas (montées de genoux lestées + gainage), Achille/mollets (élévations excentriques sur step). Toujours après une séance facile, jamais avant une séance clé.',
+            },
+            {
+              day: 'Samedi',
+              type: 'cle',
+              title: "Sortie longue 15km + 20' allure semi",
+              detail:
+                "EF 10km puis 20' à 4:32–4:38/km, retour calme 2km. Construire la sensation d'allure en fatigue modérée",
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 30'",
+              detail: 'Très facile',
+            },
+          ],
+        },
+        {
+          n: 7,
+          p: 2,
+          label: 'Sem. 7 — 3 au 9 août',
+          focus: 'Volume + allure semi prolongée',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '10 × 400m à 3:48/km',
+              detail:
+                "Échauffement 15'<br>10 × 400m à 3:46–3:50/km / récup 90\"<br>Retour calme 10'",
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 2 × 15'",
+              detail:
+                "Échauffement 15'<br>2 × 15' à 4:30–4:35/km (récup 3'30)<br>Retour calme 10'. Blocs plus longs, plus proches de l'effort course",
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement ciblé',
+              detail:
+                '2 séances 20-25min cette semaine : adducteurs (gainage Copenhagen ou élastique), psoas (montées de genoux lestées + gainage), Achille/mollets (élévations excentriques sur step). Toujours après une séance facile, jamais avant une séance clé.',
+            },
+            {
+              day: 'Samedi',
+              type: 'cle',
+              title: "Sortie longue 16km + 30' allure semi",
+              detail:
+                "EF 9km puis 30' (~6,5km) à 4:32–4:38/km, retour calme. Allonger le bloc spécifique",
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 35'",
+              detail: 'Facile, jambes légères',
+            },
+          ],
+        },
+        {
+          n: 8,
+          p: 2,
+          label: 'Sem. 8 — 10 au 16 août',
+          focus: 'Semaine clé — bloc seuil long',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '6 × 600m à 3:50/km',
+              detail:
+                "Échauffement 15'<br>6 × 600m à 3:48–3:52/km / récup 200m trot<br>Retour calme 10'",
+            },
+            {
+              day: 'Mercredi',
+              type: 'cle',
+              title: "Seuil 3 × 14'",
+              detail:
+                "Échauffement 15'<br>3 × 14' à 4:28–4:33/km (récup 3')<br>Retour calme 10'. Séance la plus exigeante du plan en seuil pur",
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement ciblé',
+              detail:
+                '2 séances 20-25min cette semaine : adducteurs (gainage Copenhagen ou élastique), psoas (montées de genoux lestées + gainage), Achille/mollets (élévations excentriques sur step). Toujours après une séance facile, jamais avant une séance clé.',
+            },
+            {
+              day: 'Samedi',
+              type: 'cle',
+              title: 'Sortie longue 17km dont 8km allure semi',
+              detail:
+                'EF 9km, puis 8km progressifs de 4:40 vers 4:30/km, retour calme 0km. Simuler la 2e moitié de course',
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 30'",
+              detail: 'Très facile, semaine la plus chargée du plan',
+            },
+          ],
+        },
+        {
+          n: 9,
+          p: 2,
+          label: 'Sem. 9 — 17 au 23 août',
+          focus: 'Semaine allégée — assimilation',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '8 × 400m à 3:50/km',
+              detail:
+                'Échauffement 15\'<br>8 × 400m à 3:48–3:52/km / récup 90"<br>Volume réduit',
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 2 × 12'",
+              detail:
+                "Échauffement 15'<br>2 × 12' à 4:32–4:38/km (récup 3')<br>Retour calme 10'",
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement (version courte)',
+              detail:
+                'Version courte (15min) cette semaine : mobilité hanches, gainage léger, quelques élévations mollets. Priorité à la fraîcheur des jambes.',
+            },
+            {
+              day: 'Samedi',
+              type: 'long',
+              title: 'Sortie longue 14km easy',
+              detail:
+                'Allure EF haute (5:30–5:50/km). Récupération active après la semaine 8',
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Repos ou 20' très facile",
+              detail: 'Selon les sensations',
+            },
+          ],
+        },
+        {
+          n: 10,
+          p: 2,
+          label: 'Sem. 10 — 24 au 30 août',
+          focus: 'Pic de volume spécifique',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '6 × 500m à 3:48/km',
+              detail:
+                "Échauffement 15'<br>6 × 500m à 3:46–3:50/km / récup 150m trot<br>Retour calme 10'",
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 3 × 12'",
+              detail:
+                "Échauffement 15'<br>3 × 12' à 4:28–4:32/km (récup 3')<br>Retour calme 10'",
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement ciblé',
+              detail:
+                '2 séances 20-25min cette semaine : adducteurs (gainage Copenhagen ou élastique), psoas (montées de genoux lestées + gainage), Achille/mollets (élévations excentriques sur step). Toujours après une séance facile, jamais avant une séance clé.',
+            },
+            {
+              day: 'Samedi',
+              type: 'cle',
+              title:
+                'Sortie longue de référence : 18-19km dont 10km allure semi',
+              detail:
+                "EF 8-9km, puis 10km à 4:32–4:38/km, retour calme. Sortie longue la plus exigeante du plan — l'indicateur le plus fiable de ton chrono",
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 30'",
+              detail: "Très facile, bien récupérer avant l'allègement",
+            },
+          ],
+          note: "<strong>Sortie de référence S10 :</strong> si les 10km à allure semi passent sans dérive cardiaque excessive, le 1h35-1h38 est solidement engagé. Si la 2e moitié du bloc se dégrade nettement, viser plutôt 1h38-1h40 — toujours en ligne avec l'objectif.",
+        },
+        {
+          n: 11,
+          p: 2,
+          label: 'Sem. 11 — 31 août au 6 septembre',
+          focus: 'Approche du 12km — réduction progressive',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'VMA',
+              title: '8 × 400m à 3:50/km',
+              detail:
+                "Échauffement 15'<br>8 × 400m à 3:48–3:52/km / récup 90\"<br>Retour calme 10'. Jambes vives avant la course",
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil 2 × 10'",
+              detail:
+                "Échauffement 15'<br>2 × 10' à 4:30–4:35/km (récup 3')<br>Retour calme 10'",
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement (version courte)',
+              detail:
+                'Version courte (15min) cette semaine : mobilité hanches, gainage léger, quelques élévations mollets. Priorité à la fraîcheur des jambes.',
+            },
+            {
+              day: 'Samedi',
+              type: 'cle',
+              title: '12km à allure A12 (répétition générale)',
+              detail:
+                "Échauffement 15'<br>12km à 4:20–4:32/km (effort ~88-90%, pas à fond)<br>Retour calme. Sert de répétition logistique et d'allure pour la vraie course du 13/09",
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 25'",
+              detail: 'Très facile',
+            },
+          ],
+        },
+        {
+          n: 12,
+          p: 2,
+          label: 'Sem. 12 — 7 au 13 septembre',
+          focus: 'Affûtage court + COURSE 12km',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'recup',
+              title: "Récup 30' + activation",
+              detail: 'Facile, quelques accélérations courtes en fin de sortie',
+            },
+            {
+              day: 'Mardi',
+              type: 'VMA',
+              title: '6 × 300m à 3:50/km',
+              detail:
+                "Échauffement 15'<br>6 × 300m à 3:48–3:52/km / récup 100m trot<br>Jambes vives, volume très réduit",
+            },
+            {
+              day: 'Mercredi',
+              type: 'renfort',
+              title: 'Renforcement (version courte)',
+              detail:
+                'Version courte (15min) cette semaine : mobilité hanches, gainage léger, quelques élévations mollets. Priorité à la fraîcheur des jambes.',
+            },
+            {
+              day: 'Vendredi',
+              type: 'recup',
+              title: 'Repos complet',
+              detail:
+                'Hydratation, sommeil, préparation logistique de la course',
+            },
+            {
+              day: 'Dimanche',
+              type: 'compet',
+              title: 'COURSE 12km — effort maîtrisé !',
+              detail:
+                "Objectif : 52:00-54:30 (4:20-4:32/km), soit ~88-90% d'effort. Ne pas chercher le chrono maximal : c'est un jalon avant le semi, pas la priorité. Départ contrôlé, négative split si possible",
+            },
+          ],
+          note: "<strong>Stratégie de course 12km :</strong> partir 5-10s/km plus lentement que l'allure cible sur le premier km, puis stabiliser à 4:20-4:32/km. Garder 10-15% de réserve à l'arrivée — l'objectif est de finir frais pour enchaîner la récupération vers le semi, pas de vider les réservoirs.",
+        },
+        {
+          n: 13,
+          p: 3,
+          label: 'Sem. 13 — 14 au 20 septembre',
+          focus: 'Récupération post-12km',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'recup',
+              title: 'Repos complet ou marche',
+              detail:
+                'Aucune contrainte. Laisser les jambes récupérer pleinement',
+            },
+            {
+              day: 'Mercredi',
+              type: 'recup',
+              title: "EF très facile 30'",
+              detail: 'Allure très lente, aucune pression de rythme',
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement doux',
+              detail:
+                'Version courte (15min) cette semaine : mobilité hanches, gainage léger, quelques élévations mollets. Priorité à la fraîcheur des jambes.',
+            },
+            {
+              day: 'Samedi',
+              type: 'recup',
+              title: "EF 40' facile",
+              detail: 'Reprise progressive du volume, sensations avant tout',
+            },
+            {
+              day: 'Dimanche',
+              type: 'long',
+              title: "EF 50' + quelques accélérations",
+              detail:
+                'Fin d\'EF avec 4-5 accélérations de 15-20" pour réactiver les jambes en douceur',
+            },
+          ],
+        },
+        {
+          n: 14,
+          p: 3,
+          label: 'Sem. 14 — 21 au 27 septembre',
+          focus: 'Reprise spécifique courte',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'seuil',
+              title: "Seuil 2 × 10'",
+              detail:
+                "Échauffement 15'<br>2 × 10' à 4:32–4:38/km (récup 3')<br>Retour calme 10'. Réactiver l'allure seuil sans excès",
+            },
+            {
+              day: 'Mercredi',
+              type: 'VMA',
+              title: '6 × 400m à 3:50/km',
+              detail:
+                'Échauffement 15\'<br>6 × 400m à 3:48–3:52/km / récup 90"<br>Volume très réduit, jambes vives',
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Renforcement (version courte)',
+              detail:
+                'Version courte (15min) cette semaine : mobilité hanches, gainage léger, quelques élévations mollets. Priorité à la fraîcheur des jambes.',
+            },
+            {
+              day: 'Samedi',
+              type: 'cle',
+              title: 'Sortie longue modérée 14-15km dont 5km allure semi',
+              detail:
+                "EF 9-10km puis 5km à 4:32–4:38/km, retour calme. Dernier rappel sérieux de l'allure cible avant l'affûtage final",
+            },
+            {
+              day: 'Dimanche',
+              type: 'recup',
+              title: "Récup 30'",
+              detail: 'Très facile',
+            },
+          ],
+        },
+        {
+          n: 15,
+          p: 3,
+          label: 'Sem. 15 — 28 septembre au 4 octobre',
+          focus: 'Affûtage final + COMPÉTITION SEMI !',
+          sessions: [
+            {
+              day: 'Lundi',
+              type: 'recup',
+              title: "EF 30' + 4 accélérations",
+              detail:
+                'Facile, 4 × 20" progressives en fin de séance pour garder du tonus',
+            },
+            {
+              day: 'Mercredi',
+              type: 'seuil',
+              title: "Seuil court 2 × 8'",
+              detail:
+                "Échauffement 15'<br>2 × 8' à 4:33–4:38/km (récup 3')<br>Retour calme. Doit sembler facile — sensation de fraîcheur prioritaire",
+            },
+            {
+              day: 'Jeudi',
+              type: 'renfort',
+              title: 'Mobilité légère',
+              detail:
+                'Mobilité uniquement (10min) : hanches, chevilles, gainage statique léger. Pas de charge.',
+            },
+            {
+              day: 'Vendredi',
+              type: 'recup',
+              title: 'Repos complet',
+              detail:
+                'Hydratation, glucides, sommeil 8h+. Visualisation de la course',
+            },
+            {
+              day: 'Dimanche',
+              type: 'compet',
+              title: 'COMPÉTITION SEMI-MARATHON !',
+              detail:
+                'Objectif : 1h35-1h39 (4:30-4:41/km). Départ prudent les 2 premiers km, puis allure de croisière, dernier 5km selon les sensations',
+            },
+          ],
+          note: "<strong>Stratégie de course semi :</strong> 2 premiers km à 4:40-4:45/km (ne pas se laisser emporter par l'excitation du départ) → stabiliser à 4:32-4:38/km jusqu'au 16e km → évaluer les sensations : si tout va bien, accélérer progressivement sur les 5 derniers km. Le 12km de 3 semaines avant t'aura donné un repère fiable sur ta gestion d'allure et ton hydratation/ravitaillement.",
+        },
+      ];
+
+      const PM = {
+        1: { label: 'Phase 1 — Développement', cls: 'p1' },
+        2: { label: 'Phase 2 — Spécifique semi & 12km', cls: 'p2' },
+        3: { label: 'Phase 3 — Transition & affûtage semi', cls: 'p3' },
+      };
+      const TM = {
+        VMA: { l: 'VMA', c: 't-vma' },
+        seuil: { l: 'Seuil', c: 't-seuil' },
+        long: { l: 'Long', c: 't-long' },
+        recup: { l: 'Récup', c: 't-recup' },
+        compet: { l: 'Compét !', c: 't-compet' },
+        cle: { l: 'Séance clé', c: 't-cle' },
+        renfort: { l: 'Renfort', c: 't-renfort' },
+      };
+
+      const currentWeek = 1;
+      let cw = currentWeek;
+
+      function rws() {
+        const sel = document.getElementById('ws');
+        sel.innerHTML = W.map((w) => {
+          const p = PM[w.p];
+          return `<button class="wb ${p.cls}${w.n < currentWeek ? ' wb-done' : ''}${w.n === cw ? ' on' : ''}" onclick="selw(${w.n})" title="${w.label}">S${w.n}</button>`;
+        }).join('');
+      }
+
+      function rw(n) {
+        const w = W.find((x) => x.n === n);
+        const p = PM[w.p];
+        const el = document.getElementById('wc');
+        el.innerHTML = `
+          <div class="w-hdr">
+            <div class="w-phase">${p.label}</div>
+            <div class="w-title">${w.label}</div>
+            <div class="w-focus">${w.focus}</div>
+          </div>
+          <div class="sg">
+            ${w.sessions
+              .map((s) => {
+                const m = TM[s.type] || { l: s.type, c: 't-recup' };
+                return `<div class="sc${s.done ? ' sc-done' : ''}">
+                <div class="sc-day">${s.day}</div>
+                <span class="sc-badge ${m.c}">${m.l}</span>
+                <div class="sc-title">${s.title}</div>
+                <div class="sc-detail">${s.detail}</div>
+              </div>`;
+              })
+              .join('')}
+          </div>
+          ${w.note ? `<div class="note-box">${w.note}</div>` : ''}
+        `;
+      }
+
+      function selw(n) {
+        cw = n;
+        rws();
+        rw(n);
+      }
+      rws();
+      rw(currentWeek);
+
+      function renderProgress() {
+        const allSessions = W.flatMap((w) => w.sessions);
+        const total = allSessions.length;
+        const done = allSessions.filter((s) => s.done).length;
+        const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+        const segs = W.map((w) => {
+          const t = w.sessions.length;
+          const d = w.sessions.filter((s) => s.done).length;
+          return { n: w.n, total: t, done: d, full: d === t };
+        });
+        const el = document.getElementById('global-progress');
+        el.innerHTML = `
+          <div class="progress-header">
+            <span class="progress-label">Progression globale</span>
+            <span class="progress-stat">${done}<span> / ${total} séances complétées &nbsp;·&nbsp; ${pct}%</span></span>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+          <div class="progress-segments">
+            ${segs
+              .map((s) => {
+                let cls = '';
+                if (s.done === s.total && s.total > 0) cls = 'done-full';
+                else if (s.done > 0) cls = 'done';
+                return `<div class="progress-seg ${cls}" title="Sem. ${s.n} — ${s.done}/${s.total}"></div>`;
+              })
+              .join('')}
+          </div>
+          <div class="progress-seg-labels">${segs.map((s) => `<span class="progress-seg-label">S${s.n}</span>`).join('')}</div>
+        `;
+      }
+      renderProgress();
+
+      /* ======================================================
+         CALCULATEUR D'ALLURE
+      ====================================================== */
+
+      let calcMode = 'allure'; // 'allure' | 'temps' | 'vitesse'
+      let calcDist = 21.1; // km
+
+      /* Utils */
+      function pad(n) {
+        return String(Math.floor(n)).padStart(2, '0');
+      }
+
+      function secsToHMS(s) {
+        const h = Math.floor(s / 3600);
+        const m = Math.floor((s % 3600) / 60);
+        const sec = Math.round(s % 60);
+        if (h > 0) return `${h}:${pad(m)}:${pad(sec)}`;
+        return `${pad(m)}:${pad(sec)}`;
+      }
+
+      function secsToPace(s) {
+        // s = seconds per km
+        const m = Math.floor(s / 60);
+        const sec = Math.round(s % 60);
+        return `${m}:${pad(sec)}/km`;
+      }
+
+      function paceStrToSecs(str) {
+        // "4:00" or "4:00:00" → seconds per km
+        const parts = str.split(':').map(Number);
+        if (parts.length === 2) return parts[0] * 60 + parts[1];
+        if (parts.length === 3)
+          return parts[0] * 3600 + parts[1] * 60 + parts[2];
+        return NaN;
+      }
+
+      function timeStrToSecs(str) {
+        const parts = str.split(':').map(Number);
+        if (parts.length === 3)
+          return parts[0] * 3600 + parts[1] * 60 + parts[2];
+        if (parts.length === 2) return parts[0] * 60 + parts[1];
+        return NaN;
+      }
+
+      function distLabel(d) {
+        if (d === 42.195) return 'Marathon';
+        if (d === 21.0975) return 'Semi';
+        if (d % 1 === 0) return `${d} km`;
+        return `${d.toFixed(3).replace(/\.?0+$/, '')} km`;
+      }
+
+      function onDistInput() {
+        const v = parseFloat(document.getElementById('inp-dist').value);
+        if (!isNaN(v) && v > 0) {
+          calcDist = v;
+        }
+        compute();
+      }
+
+      /* Mode */
+      function setMode(mode, btn) {
+        calcMode = mode;
+        document
+          .querySelectorAll('.calc-mode-btn')
+          .forEach((b) => b.classList.remove('on'));
+        btn.classList.add('on');
+        renderInputs();
+        compute();
+      }
+
+      /* Render inputs */
+      function renderInputs() {
+        const wrap = document.getElementById('calc-inputs');
+        if (calcMode === 'allure') {
+          wrap.innerHTML = `
+            <div class="section-title">Allure (min:sec /km)</div>
+            <div class="calc-grid">
+              <div class="calc-field">
+                <label class="calc-label">Minutes</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="inp-min" type="number" value="4" min="0" max="59" oninput="compute()" />
+                </div>
+              </div>
+              <div class="calc-sep">:</div>
+              <div class="calc-field">
+                <label class="calc-label">Secondes</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="inp-sec" type="number" value="0" min="0" max="59" oninput="compute()" />
+                </div>
+              </div>
+            </div>`;
+        } else if (calcMode === 'temps') {
+          wrap.innerHTML = `
+            <div class="section-title">Temps de course</div>
+            <div class="calc-grid">
+              <div class="calc-field">
+                <label class="calc-label">Heures</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="inp-h" type="number" value="0" min="0" max="23" oninput="compute()" />
+                </div>
+              </div>
+              <div class="calc-sep">:</div>
+              <div class="calc-field">
+                <label class="calc-label">Minutes</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="inp-m" type="number" value="20" min="0" max="59" oninput="compute()" />
+                </div>
+              </div>
+              <div class="calc-sep">:</div>
+              <div class="calc-field">
+                <label class="calc-label">Secondes</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="inp-s" type="number" value="0" min="0" max="59" oninput="compute()" />
+                </div>
+              </div>
+            </div>`;
+        } else {
+          wrap.innerHTML = `
+            <div class="section-title">Vitesse</div>
+            <div class="calc-grid" style="grid-template-columns: 1fr 1fr;">
+              <div class="calc-field">
+                <label class="calc-label">Vitesse</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="inp-vit" type="number" value="15.0" min="0.1" step="0.1" oninput="compute()" />
+                  <span class="calc-unit">km/h</span>
+                </div>
+              </div>
+            </div>`;
+        }
+      }
+
+      /* Compute */
+      function compute() {
+        let paceSecs = NaN; // sec/km
+        let totalSecs = NaN; // total seconds
+        let speedKmh = NaN;
+
+        if (calcMode === 'allure') {
+          const minEl = document.getElementById('inp-min');
+          const secEl = document.getElementById('inp-sec');
+          if (!minEl || !secEl) return;
+          const mins = parseFloat(minEl.value);
+          const secs = parseFloat(secEl.value) || 0;
+          if (!isNaN(mins) && mins >= 0) {
+            paceSecs = mins * 60 + secs;
+            totalSecs = paceSecs * calcDist;
+            speedKmh = 3600 / paceSecs;
+          }
+        } else if (calcMode === 'temps') {
+          const hEl = document.getElementById('inp-h');
+          const mEl = document.getElementById('inp-m');
+          const sEl = document.getElementById('inp-s');
+          if (!mEl) return;
+          const h = parseFloat(hEl ? hEl.value : 0) || 0;
+          const m = parseFloat(mEl.value) || 0;
+          const s = parseFloat(sEl ? sEl.value : 0) || 0;
+          if (h > 0 || m > 0 || s > 0) {
+            totalSecs = h * 3600 + m * 60 + s;
+            paceSecs = totalSecs / calcDist;
+            speedKmh = (calcDist / totalSecs) * 3600;
+          }
+        } else {
+          const vEl = document.getElementById('inp-vit');
+          if (!vEl) return;
+          speedKmh = parseFloat(vEl.value);
+          if (!isNaN(speedKmh) && speedKmh > 0) {
+            paceSecs = 3600 / speedKmh;
+            totalSecs = paceSecs * calcDist;
+          }
+        }
+
+        const resultEl = document.getElementById('calc-result');
+        const emptyEl = document.getElementById('calc-result-empty');
+        const contentEl = document.getElementById('calc-result-content');
+        const labelEl = document.getElementById('calc-result-label');
+        const mainEl = document.getElementById('calc-result-main');
+        const subEl = document.getElementById('calc-result-sub');
+        const bgEl = document.getElementById('calc-result-bg');
+
+        if (isNaN(paceSecs) || paceSecs <= 0 || !isFinite(paceSecs)) {
+          resultEl.classList.remove('has-result');
+          emptyEl.style.display = '';
+          contentEl.style.display = 'none';
+          document.getElementById('splits-wrap').style.display = 'none';
+          document.getElementById('equiv-wrap').style.display = 'none';
+          return;
+        }
+
+        resultEl.classList.add('has-result');
+        emptyEl.style.display = 'none';
+        contentEl.style.display = 'block';
+
+        if (calcMode === 'allure') {
+          labelEl.textContent = `Temps sur ${distLabel(calcDist)}`;
+          mainEl.textContent = secsToHMS(totalSecs);
+          bgEl.textContent = secsToHMS(totalSecs);
+          subEl.textContent = `${secsToPace(paceSecs)}  ·  ${speedKmh.toFixed(2)} km/h`;
+        } else if (calcMode === 'temps') {
+          labelEl.textContent = `Allure sur ${distLabel(calcDist)}`;
+          mainEl.textContent = secsToPace(paceSecs);
+          bgEl.textContent = secsToPace(paceSecs).replace('/km', '');
+          subEl.textContent = `Temps : ${secsToHMS(totalSecs)}  ·  ${speedKmh.toFixed(2)} km/h`;
+        } else {
+          labelEl.textContent = `Temps sur ${distLabel(calcDist)}`;
+          mainEl.textContent = secsToHMS(totalSecs);
+          bgEl.textContent = secsToHMS(totalSecs);
+          subEl.textContent = `${secsToPace(paceSecs)}  ·  ${speedKmh.toFixed(2)} km/h`;
+        }
+
+        /* Splits */
+        renderSplits(paceSecs, totalSecs, calcDist);
+
+        /* Zone equivalences */
+        renderEquiv(paceSecs);
+      }
+
+      function renderSplits(paceSecs, totalSecs, dist) {
+        const wrap = document.getElementById('splits-wrap');
+        const tbody = document.getElementById('splits-body');
+        wrap.style.display = 'block';
+
+        const rows = [];
+        const step = dist <= 3 ? 0.5 : dist <= 10 ? 1 : dist <= 25 ? 5 : 5;
+        let km = step;
+        while (km < dist - 0.001) {
+          rows.push(km);
+          km = Math.round((km + step) * 10000) / 10000;
+        }
+        rows.push(dist);
+
+        let html = '';
+        rows.forEach((d, i) => {
+          const cumulSecs = paceSecs * d;
+          const segSecs = i === 0 ? cumulSecs : paceSecs * (d - rows[i - 1]);
+          const isLast = i === rows.length - 1;
+          const label =
+            isLast && d === dist && d % step !== 0
+              ? distLabel(d)
+              : d % 1 === 0
+                ? `${d} km`
+                : `${d.toFixed(1)} km`;
+          const highlight = isLast ? ' class="split-highlight"' : '';
+          html += `<tr${highlight}>
+            <td>${label}</td>
+            <td class="split-time">${secsToHMS(segSecs)}</td>
+            <td class="split-cumul">${secsToHMS(cumulSecs)}</td>
+          </tr>`;
+        });
+        tbody.innerHTML = html;
+      }
+
+      function renderEquiv(paceSecs) {
+        const wrap = document.getElementById('equiv-wrap');
+        wrap.style.display = 'block';
+
+        const zones = [
+          {
+            label: 'EF (65–75%)',
+            pct: [0.65, 0.75],
+            color: 'var(--long-text)',
+            bg: 'var(--long-bg)',
+            border: 'var(--long-border)',
+          },
+          {
+            label: 'Seuil (83–87%)',
+            pct: [0.83, 0.87],
+            color: 'var(--seuil-text)',
+            bg: 'var(--seuil-bg)',
+            border: 'var(--seuil-border)',
+          },
+          {
+            label: 'VMA (100%)',
+            pct: [1, 1],
+            color: 'var(--coral)',
+            bg: 'var(--coral-bg)',
+            border: 'var(--coral-border)',
+          },
+          {
+            label: 'Sur-VMA (105–112%)',
+            pct: [1.05, 1.12],
+            color: 'var(--vma-text)',
+            bg: 'var(--vma-bg)',
+            border: 'var(--vma-border)',
+          },
+          {
+            label: 'Sprint (115–130%)',
+            pct: [1.15, 1.3],
+            color: 'var(--cle-text)',
+            bg: 'var(--cle-bg)',
+            border: 'var(--cle-border)',
+          },
+        ];
+
+        const speedMs = 1000 / paceSecs; // m/s at given pace
+
+        const html = zones
+          .map((z) => {
+            const loSecs = paceSecs / z.pct[1];
+            const hiSecs = paceSecs / z.pct[0];
+            let display;
+            if (z.pct[0] === z.pct[1]) {
+              display = secsToPace(paceSecs);
+            } else {
+              const lo = secsToPace(loSecs);
+              const hi = secsToPace(hiSecs);
+              display = `${lo.replace('/km', '')}–${hi}`;
+            }
+            return `<div class="zone-eq-card" style="border-color:${z.border}; background:${z.bg};">
+            <div class="zone-eq-label" style="color:${z.color}">${z.label}</div>
+            <div class="zone-eq-val" style="color:${z.color}">${display}</div>
+          </div>`;
+          })
+          .join('');
+
+        document.getElementById('zone-equiv').innerHTML = html;
+      }
+
+      /* Init */
+      renderInputs();
+      // pre-fill with semi target pace
+      setTimeout(() => {
+        const minEl = document.getElementById('inp-min');
+        const secEl = document.getElementById('inp-sec');
+        if (minEl) minEl.value = 4;
+        if (secEl) secEl.value = '35';
+        compute();
+      }, 50);
+    </script>
+  </body>
+</html>
