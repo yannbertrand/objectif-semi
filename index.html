@@ -1458,6 +1458,41 @@
           </div>
           <div class="zone-equiv" id="zone-equiv"></div>
         </div>
+
+        <!-- Vitesse Critique -->
+        <div class="calc-divider" style="margin-top: 2.5rem"></div>
+        <div class="section-title">Calculateur de vitesse critique</div>
+        <p
+          style="
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+            font-weight: 300;
+          "
+        >
+          Entre tes 3 résultats de test (1km, 3km, 5km) pour calculer ta vitesse
+          critique par régression linéaire distance/temps.
+        </p>
+        <div id="vc-rows"></div>
+        <button
+          class="calc-mode-btn on"
+          style="margin-top: 0.75rem; width: 100%"
+          onclick="computeVC()"
+        >
+          Calculer ma VC
+        </button>
+        <div
+          class="calc-result"
+          id="vc-result"
+          style="display: none; margin-top: 1rem"
+        >
+          <div class="calc-result-bg"></div>
+          <div id="vc-result-content">
+            <div class="calc-result-label" id="vc-result-label"></div>
+            <div class="calc-result-main" id="vc-result-main"></div>
+            <div class="calc-result-sub" id="vc-result-sub"></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1481,35 +1516,42 @@
           n: 1,
           p: 1,
           label: 'Sem. 1 — 22 au 28 juin',
-          focus: 'Reprise structurée : seuil + VMA courte',
+          focus: 'Semaine de tests : vitesse critique (1km + 3km)',
           sessions: [
             {
               day: 'Lundi',
-              type: 'VMA',
-              title: '12 × 300m à 3:50/km',
+              type: 'recup',
+              title: "EF facile 30' + 4 lignes droites",
               detail:
-                "Échauffement 15'<br>12 × 300m à 3:48–3:52/km / récup 100m trot<br>Retour calme 10'. Réactiver la vitesse en douceur après le 5km",
+                'Footing très facile + 4 × 20" progressives en fin de séance pour activer les jambes sans les fatiguer. Pas d\'intensité avant le test de demain',
+            },
+            {
+              day: 'Mardi',
+              type: 'cle',
+              title: 'TEST 1/2 — 1km all-out',
+              detail:
+                "Échauffement complet 20' (footing + gammes + 3-4 accélérations)<br>1km chronométré à fond, départ contrôlé puis tout donner<br>Retour calme 10'. Noter le temps exact (mm:ss) pour le calculateur de vitesse critique (onglet Allure)",
             },
             {
               day: 'Mercredi',
-              type: 'seuil',
-              title: "Seuil 3 × 8'",
+              type: 'renfort',
+              title: 'Renforcement (version courte)',
               detail:
-                "Échauffement 15'<br>3 × 8' à 4:27–4:32/km (récup 2')<br>Retour calme 10'. Pose la base du seuil pour les 15 prochaines semaines",
+                'Version courte (15min) cette semaine : mobilité hanches, gainage léger, quelques élévations mollets. Priorité à la récupération post-test.',
             },
             {
               day: 'Vendredi',
-              type: 'renfort',
-              title: 'Renforcement ciblé',
+              type: 'recup',
+              title: "EF très facile 25'",
               detail:
-                '2 séances 20-25min cette semaine : adducteurs (gainage Copenhagen ou élastique), psoas (montées de genoux lestées + gainage), Achille/mollets (élévations excentriques sur step). Toujours après une séance facile, jamais avant une séance clé.',
+                'Décrassage, allure très lente. Garder les jambes fraîches pour le test du lendemain',
             },
             {
               day: 'Samedi',
-              type: 'long',
-              title: 'Sortie longue 12km EF',
+              type: 'cle',
+              title: 'TEST 2/2 — 3km all-out',
               detail:
-                'Allure 5:30–5:50/km, plat. Première sortie longue du cycle, garder du jus',
+                "Échauffement complet 20' (footing + gammes + 3-4 accélérations)<br>3km chronométré à fond, allure régulière du début à la fin<br>Retour calme 10'. Noter le temps exact — avec le 1km de mardi et ton 5km du 20/06, tu as les 3 points pour calculer ta VC",
             },
             {
               day: 'Dimanche',
@@ -1518,6 +1560,7 @@
               detail: 'Très facile. Marche/jogging léger + étirements',
             },
           ],
+          note: "<strong>Semaine de tests :</strong> les séances qualité habituelles (seuil/VMA) cèdent la place aux 2 tests de vitesse critique, espacés de 4 jours (mardi 23 → samedi 27, dans la fenêtre demandée). Une fois les 3 résultats (1km, 3km, 5km du 20/06) saisis dans le calculateur (onglet Allure), on recalibre les zones d'entraînement si besoin dès la semaine 2.",
         },
         {
           n: 2,
@@ -2522,6 +2565,109 @@
 
         document.getElementById('zone-equiv').innerHTML = html;
       }
+
+      /* ======================================================
+         VITESSE CRITIQUE (régression sur 3 points distance/temps)
+      ====================================================== */
+      const VC_DEFAULTS = [
+        { label: '1km', dist: 1 },
+        { label: '3km', dist: 3 },
+        { label: '5km', dist: 5 },
+      ];
+
+      function renderVCRows() {
+        const html = VC_DEFAULTS.map(
+          (d, i) => `
+          <div class="calc-grid" style="margin-bottom: 0.75rem; align-items: flex-end">
+            <div class="calc-field" style="flex: 0 0 70px">
+              <label class="calc-label">Distance</label>
+              <div class="calc-input-wrap">
+                <span style="padding: 0 4px; font-weight: 600">${d.label}</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Minutes</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="vc-min-${i}" type="number" min="0" max="59" placeholder="--" />
+              </div>
+            </div>
+            <div class="calc-sep">:</div>
+            <div class="calc-field">
+              <label class="calc-label">Secondes</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="vc-sec-${i}" type="number" min="0" max="59" placeholder="--" />
+              </div>
+            </div>
+          </div>`,
+        ).join('');
+        document.getElementById('vc-rows').innerHTML = html;
+      }
+
+      function fmtPace(secPerKm) {
+        const m = Math.floor(secPerKm / 60);
+        const s = Math.round(secPerKm % 60);
+        return `${m}:${s.toString().padStart(2, '0')}`;
+      }
+
+      function computeVC() {
+        const pts = [];
+        for (let i = 0; i < VC_DEFAULTS.length; i++) {
+          const min = parseFloat(document.getElementById(`vc-min-${i}`).value);
+          const sec = parseFloat(document.getElementById(`vc-sec-${i}`).value);
+          if (isNaN(min) && isNaN(sec)) continue;
+          const t = (min || 0) * 60 + (sec || 0);
+          if (t > 0) pts.push({ d: VC_DEFAULTS[i].dist * 1000, t });
+        }
+        const resBox = document.getElementById('vc-result');
+        if (pts.length < 2) {
+          resBox.style.display = 'block';
+          document.getElementById('vc-result-label').textContent =
+            'Données insuffisantes';
+          document.getElementById('vc-result-main').textContent = '—';
+          document.getElementById('vc-result-sub').textContent =
+            'Renseigne au moins 2 temps (idéalement les 3) pour calculer ta VC.';
+          return;
+        }
+        // Régression linéaire : d = CS * t + D'
+        const n = pts.length;
+        const sumT = pts.reduce((a, p) => a + p.t, 0);
+        const sumD = pts.reduce((a, p) => a + p.d, 0);
+        const sumTT = pts.reduce((a, p) => a + p.t * p.t, 0);
+        const sumTD = pts.reduce((a, p) => a + p.t * p.d, 0);
+        const meanT = sumT / n;
+        const meanD = sumD / n;
+        const CS = (sumTD - n * meanT * meanD) / (sumTT - n * meanT * meanT); // m/s
+        const Dprime = meanD - CS * meanT; // m
+
+        let r2 = null;
+        if (n >= 3) {
+          const ssTot = pts.reduce((a, p) => a + Math.pow(p.d - meanD, 2), 0);
+          const ssRes = pts.reduce(
+            (a, p) => a + Math.pow(p.d - (CS * p.t + Dprime), 2),
+            0,
+          );
+          r2 = 1 - ssRes / ssTot;
+        }
+
+        const csKmh = (CS * 3.6).toFixed(2);
+        const csPace = fmtPace(1000 / CS);
+
+        resBox.style.display = 'block';
+        document.getElementById('vc-result-label').textContent =
+          'Vitesse critique estimée';
+        document.getElementById('vc-result-main').textContent =
+          `${csPace}/km · ${csKmh} km/h`;
+        let sub = `D' (capacité anaérobie) ≈ ${Math.round(Dprime)}m.`;
+        if (r2 !== null) {
+          sub += ` R² = ${r2.toFixed(3)}${r2 < 0.98 ? ' — ajustement imparfait, vérifie tes temps' : ' — très bon ajustement'}.`;
+        } else {
+          sub +=
+            " Ajoute un 3e point pour vérifier la qualité de l'ajustement (R²).";
+        }
+        document.getElementById('vc-result-sub').textContent = sub;
+      }
+
+      renderVCRows();
 
       /* Init */
       renderInputs();
